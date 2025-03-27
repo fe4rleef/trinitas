@@ -7,13 +7,30 @@
     <style>
 
 h1 {
-    color: red;
-    background:blueviolet;
+    color: transparent;
+    transition: all 1s;
+    background:linear-gradient(to right, red, blue, green,orange,yellow,pink,brown,black);
+    background-size: 300% ;
+    background-clip: text;
+    animation: magic 3s linear infinite;
 }
+
+h1: hover {
+        opacity: 0.25;
+        transform: scale(1)
+    }
+
+    @keyframes magic {
+        0% { background-position: 0%}
+        100% { background-position: 100%}
+    }
+
+    
 
     </style>
 </head>
 <body>
    <h1>Heyo!</h1> 
+   <h1> hmm </h1>
 </body>
 </html>
