@@ -5,9 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Testing</title>
     <style>
-        /*Notes for the test*/
+        /*Notes for the test
+          ; terminates a rule/statement*/
 h1 {
     color: transparent;
+    ;
     transition: all 1s;
     background:linear-gradient(to right, red, blue, green,orange,yellow,pink,brown,black);
     background-size: 300% ;
@@ -15,9 +17,11 @@ h1 {
     animation: magic 3s linear infinite;
 }
 
+/*body:has(a){
+background="yellow"}*/
+
 h1:hover {
-        text-align: center;
-        transform: scale(1.5)
+        transform: scale(3)
     }
 
     @keyframes magic {
@@ -30,7 +34,7 @@ h1:hover {
     </style>
 </head>
 <body>
-   <h1>Heyo!</h1> 
-   <h1> hmm </h1>
+   <h1 align="center">Heyo!</h1> 
+   <h1 align="center"> hmm </h1>
 </body>
 </html>
