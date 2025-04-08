@@ -1,4 +1,9 @@
-h1 {
-    color: aquamarine;
-    font-family: 'Times New Roman', Times, serif;
+body {
+    --bordercolor:aquamarine;
+}
+
+iframe{
+    border-color: var(--bordercolor);
+    border-width: 5px;
+    border-style: solid;
 }
