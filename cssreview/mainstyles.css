@@ -1,0 +1,19 @@
+#iamsteve {
+    --on-size: 10em;
+    --off-size: 7em;
+}
+
+#iamsteve {
+    width: var(--off-size);
+    height: var(--off-size);
+    border: 2px solid green;
+    background: rebeccapurple;
+    transition: all 2s;
+}
+
+#zoom:checked + #box {
+    width: 1em;
+    height: 1em;
+    border: 1px solid black;
+    background: pink
+}
