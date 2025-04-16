@@ -8,8 +8,12 @@ const username = prompt("what is your name dawg?")
 let timevalue;
 
 // Can the user find our secret
+let tries = 10
 let userAnswer = prompt("What is the secret message?");
-
+// This while loop runs as long as two conditions are true:
+// 1. The userAnswer var does not equal "please", and 
+// 2. The value of tries is greater than 0
+// When one or both of these are false, the while looop will be exited
 while (userAnswer != "hotdog" && tries > 0) {
     alert("You made the wrong choice bucko. " + tries + "left");
     userAnswer = prompt("what is the secret message?");
@@ -33,6 +37,25 @@ function settime() {
 }
 
 function renderTime() {
-   el.textContent = timevalue;
+    el.textContent = timevalue;
 }
 
+//setup tracking eyes!
+const eyes = document.querySelectorAll(".eye");
+
+document.addEventListener("mousemove", updateEyes);
+
+function updateEyes(event) {
+    for (const eye of eyes) {
+        const pupil = eye.querySelector(".pupil");
+        const shape = eye.getBoundingClientRect();
+        const dx = event.clientX - (shape.left + shape.width / 2);
+        const dy = event.clientY - (shape.top + shape.height / 2);
+        const angle = Math.atan2(dy, dx);
+        const x = Math.cos(angle) * 10;
+        const y = Math.sin(angle) * 10;
+        //Update the position of the pupils
+        pupil.style.transform = `translate(${ x }px, ${ y }px)`;
+    }
+
+}
