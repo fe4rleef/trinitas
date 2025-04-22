@@ -51,6 +51,8 @@ function settime() {
 
 }}}
 
+//function called "say;" its argument is "phrase" and its body is in the curly brackets.
+//unrelated but square brackets indicate rays
 function say (phrase) {
      const utterance = new SpeechSynthesisUtterance(phrase);
      speechSynthesis.speak(utterance);
