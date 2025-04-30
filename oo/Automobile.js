@@ -1,20 +1,23 @@
 import Machine from "./Machine.js";
 
 export default class Automobile extends Machine {
-    fuel;
-    moveSpeed;
-    constructor( options = {}) {
+  fuel;
+  moveSpeed;
 
-        const defaults = {
-            fuel: 100,
-            moveSpeed: 5,
-        };
+  constructor(options = {}) {
 
-        const opts = { ...defaults, ...options };
+    const defaults = {
+      fuel: 100,
+      moveSpeed: 5,
+    };
 
-      super(opts);
-      this.fuel =opts.fuel;
-      this.moveSpeed = opts.moveSpeed;
-      console.log("YOU MADE A CAR WITH " + opts.fuel + " % GAS IN IT");
-    }
+    const opts = { ...defaults, ...options };
+
+    super(opts);
+
+    this.fuel = opts.fuel;
+    this.moveSpeed = opts.moveSpeed;
+
+    console.log("YOU MADE A CAR WITH " + opts.fuel + " % GAS IN IT");
   }
+}
