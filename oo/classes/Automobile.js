@@ -22,20 +22,40 @@ export default class Automobile extends Machine {
     this.turnSpeed = opts.turnSpeed
   }
 
-   driveForward () {
-    this.location.x = this.location.x + this.moveSpeed
-   }
+  driveForward() {
+    // Move in the direction the vehicle is pointing
+    this.location.x += this.moveSpeed * Math.cos(this.angle);
+    this.location.y += this.moveSpeed * Math.sin(this.angle);
+  }
 
-   driveBackward () {
-    this.location.x = this.location.x - this.moveSpeed
-   }
+  driveBackward() {
+    // Move in the opposite direction the vehicle is pointing
+    this.location.x -= this.moveSpeed * Math.cos(this.angle);
+    this.location.y -= this.moveSpeed * Math.sin(this.angle);
+  }
 
-   turnLeft () {
-    this.angle = this.angle - this.turnSpeed
-   }
+  turnLeft() {
+    this.angle -= this.turnSpeed; // Turn counterclockwise
+    console.log("You're turning left");
+  }
 
-   turnRight () {
-    this.angle = this.angle - this.turnSpeed
-   }
+  turnRight() {
+    this.angle += this.turnSpeed; // Turn clockwise
+    console.log("You're turning right");
+  }
+
+  startMovement() {
+    const moveAndSpin = () => {
+      this.driveBackward(); // Move backward
+      this.turnRight(); // Spin clockwise
+      this.update(); // Update the tank's position and rotation on the screen
+
+      // Continue the loop
+      requestAnimationFrame(moveAndSpin);
+    };
+
+    // Start the loop
+    moveAndSpin();
+  }
 
 }
