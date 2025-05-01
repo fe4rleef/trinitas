@@ -4,30 +4,30 @@ export default class Machine {
     element;
     color;
     angle;
+
     //the constructor is the function/method that runs when we create an instance of our class
     constructor(options = {}) {
 
-         const defaults = {
+        const defaults = {
             weight: 1,
-            location: {x:0, y:0},
+            location: { x: 0, y: 0 },
             element: null,
             color: "gray",
             angle: 0,
         };
 
-        const opts = {...defaults, ...options};
+        const opts = { ...defaults, ...options };
 
         this.weight = opts.weight;
+        this.location = opts.location;
         this.element = opts.element;
         this.color = opts.color;
-        this.coords = opts.location;
         this.angle = opts.angle;
-        console.log("Creating machine with weight of " + opts.weight + " pounds");
-        console.log("It also had coords of " + opts.location);
+
+        console.log("Creating machine with weight of " + this.weight + " pounds");
+        console.log("It also had coords of " + this.location);
 
         this.render();
-
-
     }
 
     render() {
@@ -35,12 +35,14 @@ export default class Machine {
         if (this.element) {
             return;
         }
+
         //create our new element
         this.element = document.createElement("div");
         this.element.style.backgroundColor = this.color;
         this.element.style.width = "30px";
         this.element.style.height = "10px";
         this.element.style.transform = "rotate(" + this.angle + "rad)";
+
         //place our element on the page itself
         document.body.appendChild(this.element)
     }
