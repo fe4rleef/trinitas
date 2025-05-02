@@ -9,15 +9,15 @@ function setupKeyBinding() {
 
 
     function handleKeyUp(event) {
-        //console.log(event.code);
+        console.log(event.code);
         if (event.code === "KeyS") {
             armyTank.driveBackward();
             armyTank.update();
-            //console.log(armyTank.location.x);
+            console.log(armyTank.location.x);
         } else if (event.code == "KeyA") {
             armyTank.turnLeft();
             armyTank.update();
-            //console.log(armyTank.location.x);   
+            console.log(armyTank.location.x);   
         }
 
     }
@@ -27,7 +27,7 @@ function setupKeyBinding() {
         if (event.code == "KeyW") {
             armyTank.driveForward();
             armyTank.update();
-            //console.log(armyTank.location.x);
+            console.log(armyTank.location.x);
         }
 
         else
@@ -35,11 +35,9 @@ function setupKeyBinding() {
             if (event.code == "KeyD") {
                 armyTank.turnRight();
                 armyTank.update();
-                //console.log(armyTank.location.x);   
+                console.log(armyTank.location.x);  
             }
     }
-
-
 
     document.addEventListener("keydown", handleKeyDown);
     document.addEventListener("keyup", handleKeyUp);
