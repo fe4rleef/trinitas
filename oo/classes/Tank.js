@@ -1,11 +1,15 @@
 import Automobile from "./Automobile.js";
+import Projectile from "./Projectile.js";
 
 export default class Tank extends Automobile {
   rounds;
+  maxRounds;
+  projectiles;
 
   constructor(options = {}) {
     const defaults = {
-      rounds: 100
+      rounds: 100,
+      maxRounds: 100, // Maximum rounds the tank can hold
     };
 
     const opts = { ...defaults, ...options };
@@ -13,6 +17,8 @@ export default class Tank extends Automobile {
     super(opts);
 
     this.rounds = opts.rounds;
+    this.maxRounds = opts.maxRounds;
+    this.projectiles = []; // Track active projectiles
 
     console.log("Your tank is alive");
   }
@@ -22,20 +28,23 @@ export default class Tank extends Automobile {
       this.rounds--;
       console.log("Firing a bullet! Rounds left:", this.rounds);
 
-      // Simulate the bullet flying through the map
-      let distance = 0;
-      const interval = setInterval(() => {
-        distance += 10; // Bullet travels 10 units per interval
-        console.log(`Bullet is at distance: ${distance}`);
+      const projectile = new Projectile(this.location, this.angle);
+      this.projectiles.push(projectile);
 
-        // Stop the bullet after it travels 100 units
-        if (distance >= 100) {
+      const interval = setInterval(() => {
+        const isActive = projectile.update();
+        if (!isActive) {
           clearInterval(interval);
-          console.log("Bullet stopped.");
+          this.projectiles = this.projectiles.filter((p) => p !== projectile);
         }
       }, 100); // Update every 100ms
     } else {
       console.log("Out of rounds! Reload your tank.");
     }
   }
-};
+
+  reload() {
+    this.rounds = this.maxRounds;
+    console.log("Tank reloaded! Rounds available:", this.rounds);
+  }
+}
