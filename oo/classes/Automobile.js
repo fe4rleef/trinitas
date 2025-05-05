@@ -23,6 +23,8 @@ export default class Automobile extends Machine {
   }
 
   driveForward() {
+    const newX = this.location.x + Math.cos(this.angle) * this.moveSpeed;
+    const newY = this.location.y + Math.sin(this.angle) * this.moveSpeed;
     // Move in the direction the vehicle is pointing
     this.location.x += this.moveSpeed * Math.cos(this.angle);
     this.location.y += this.moveSpeed * Math.sin(this.angle);

@@ -48,10 +48,10 @@ export default class Machine {
         document.body.appendChild(this.element)
     }
 
-        update () {
-
-            this.element.style.left = this.location.x + "px";
-            this.element.style.top = this.location.y + "px";
-            this.element.style.transform = "rotate(" + this.angle + "rad)";}
+    update() {
+        this.element.style.top = this.location.y + "px";
+        this.element.style.left = this.location.x + "px";
+        this.element.style.transform = "rotate(" + this.angle + "rad)";
+    }
 
 };
